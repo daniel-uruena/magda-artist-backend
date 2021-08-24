@@ -6,9 +6,9 @@ export const Config: IAppConfig = {
     },
     database: {
         host: 'localhost',
-        port: 9000,
+        port: 3306,
         database: 'store',
-        username: 'admin',
+        username: 'root',
         password: 'asdf1234',
         dialect: 'mysql'
     },

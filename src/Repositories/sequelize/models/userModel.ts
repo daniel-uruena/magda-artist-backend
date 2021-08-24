@@ -17,11 +17,12 @@ export class User extends Model<IUser, UserCreationAttributes> implements IUser 
 }
 
 export const initUserModel = (sequelize: Sequelize) => {
-    User.init(
+    return User.init(
         {
             id: {
-                type: new DataTypes.STRING(),
-                primaryKey: true
+                type: DataTypes.UUID,
+                primaryKey: true,
+                defaultValue: DataTypes.UUIDV4
             },
             name: {
                 type: new DataTypes.STRING(),

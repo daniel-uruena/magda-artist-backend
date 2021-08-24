@@ -9,6 +9,7 @@ export class UserRepository {
 
     constructor(config: IAppConfig) {
         this.sequelize = new Sequelize(config.database)
+        this.initModels()
     }
 
     initModels() {
@@ -16,7 +17,7 @@ export class UserRepository {
     }
 
     async createUser(user: IUser) {
-        return User.create(user)
+        return User.create(user).then((result:any) => result.dataValues)
     }
 
     async getUsers() {

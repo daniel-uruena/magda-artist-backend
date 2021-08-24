@@ -16,7 +16,6 @@ export class UserServices {
     }
 
     async createUser(user: IUser) {
-        user.id = uuid()
         user.active = true
         user.password = await bcrypt.hash(user.password, this.secret)
         return this.userRepository.createUser(user)
