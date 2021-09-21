@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid'
 import bcrypt from 'bcrypt'
 import { IAppConfig } from '../Interfaces/AppConfig'
 import { IUser } from '../Models/User'

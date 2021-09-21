@@ -9,12 +9,14 @@
         "no-bitwise": true,
         "no-conditional-assignment": true,
         "no-consecutive-blank-lines": false,
+        "prefer-const": true,
         "semicolon": false,
         "no-console": {
             "severity": "warning",
             "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
         },
-        "max-classes-per-file": false
+        "max-classes-per-file": false,
+        "no-unused-expression": true
     },
     "jsRules": {
         "max-line-length": {

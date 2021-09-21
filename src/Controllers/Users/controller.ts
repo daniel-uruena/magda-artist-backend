@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express'
-import { userInfo } from 'os'
 import { IAppConfig } from '../../Interfaces/AppConfig'
 import { IUser } from '../../Models/User'
 import { UserServices } from '../../Services/users'
@@ -24,7 +23,7 @@ export class UserController {
             res.json(this.userResponse(userCreated))
         } catch (error) {
             console.error(error)
-            next(error)
+            next(error.message)
         }
     }
 }
