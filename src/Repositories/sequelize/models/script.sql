@@ -1,5 +1,5 @@
 CREATE TABLE `user` (
-  `id` binary(36) NOT NULL,
+  `id` varchar(100) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lastName` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phoneNumber` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,

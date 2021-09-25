@@ -1,5 +1,6 @@
 import { Optional, Model, DataTypes, Sequelize } from 'sequelize'
 import { IUser } from '../../../Models/User'
+import { v4 as uuid } from 'uuid';
 
 interface UserCreationAttributes extends Optional<IUser, 'id'> {}
 
@@ -20,9 +21,9 @@ export const initUserModel = (sequelize: Sequelize) => {
     return User.init(
         {
             id: {
-                type: DataTypes.UUID,
+                type: DataTypes.STRING(),
                 primaryKey: true,
-                defaultValue: DataTypes.UUIDV4
+                defaultValue: uuid()
             },
             name: {
                 type: new DataTypes.STRING(),
