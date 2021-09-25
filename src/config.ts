@@ -12,5 +12,6 @@ export const Config: IAppConfig = {
         password: 'asdf1234',
         dialect: 'mysql'
     },
-    secret: 10
+    secret: 10,
+    secretToken: 'secret'
 }

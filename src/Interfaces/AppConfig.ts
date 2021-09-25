@@ -1,7 +1,7 @@
 export interface IAppConfig {
     server: {
         port: number
-    },
+    }
     database: {
         host: string
         port: number
@@ -11,4 +11,5 @@ export interface IAppConfig {
         dialect?: 'mysql' | 'mariadb' | 'postgres' | 'mssql'
     }
     secret: number
+    secretToken: string
 }

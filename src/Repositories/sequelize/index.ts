@@ -65,4 +65,12 @@ export class UserRepository {
             return true
         }
     }
+
+    async getUserByUserName(userName: string) {
+        return await User.findOne({ where: { userName } })
+            .then((result:any) => result && result.dataValues)
+            .catch(error => {
+                throw new Error(error.original.message)
+            })
+    }
 }

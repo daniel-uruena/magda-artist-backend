@@ -3,6 +3,7 @@ import { IAppConfig } from '../../Interfaces/AppConfig'
 import { IUser } from '../../Models/User'
 import { newUserSchema, updateUserSchema } from '../../Schemas/userSchemas'
 import { UserServices } from '../../Services/users'
+import { userResponse } from '../../Utils'
 import logger from '../../Utils/logger'
 
 
@@ -12,10 +13,6 @@ export class UserController {
 
     constructor(config: IAppConfig) {
         this.userServices = new UserServices(config)
-    }
-
-    userResponse(user:IUser){
-        return { ...user, password: undefined }
     }
 
     createUser = async (req: Request, res: Response, next: NextFunction) => {
@@ -31,7 +28,7 @@ export class UserController {
             
             logger.info('Creating user...')
             const userCreated = await this.userServices.createUser(user)
-            const response = this.userResponse(userCreated)
+            const response = userResponse(userCreated)
             logger.info(`User created successfully: ${JSON.stringify(response)}`)
             res.json(response)
         } catch (error) {
@@ -43,7 +40,7 @@ export class UserController {
         try {
             logger.info('Getting users...')
             const users = await this.userServices.getUsers()
-            res.json(users.map(this.userResponse))
+            res.json(users.map(userResponse))
         } catch (error) {
             next(error)
         }
@@ -64,7 +61,7 @@ export class UserController {
                 res.status(404).json({ message: 'User not found' })
                 return
             }
-            res.json(this.userResponse(user))
+            res.json(userResponse(user))
         } catch (error) {
             next(error)
         }
@@ -84,7 +81,7 @@ export class UserController {
             logger.info('Updating user...')
             const user = await this.userServices.updateUser(userId, userData)
             if (user) {
-                res.json(this.userResponse(user))
+                res.json(userResponse(user))
                 return
             }
             logger.info('User not found')
